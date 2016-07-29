@@ -1,0 +1,8 @@
+<script><!-- process form without redirect -->
+$('#register_patron').submit(function() {
+  var post_data = $('#register_patron').serialize();
+  $.post('forms/registerPatron.php', post_data, function(data) {
+    $('#notification').show();
+  });
+});
+</script>  

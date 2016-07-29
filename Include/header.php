@@ -1,5 +1,5 @@
 <?php require "login/loginheader.php";
-include "Include/dbconn.php";
+include "Include/conn.php";
 ?>
 
 <!DOCTYPE html>
@@ -29,8 +29,8 @@ include "Include/dbconn.php";
 	<div class="row">
 	<div class="container col-md-2"><!-- Main nav -->
 	<ul class="nav nav-pills nav-stacked">
-		<li role="presentation" class="active"><a href="index.php">Home</a></li>
-		<li role="presentation"><a href="registration.php">Patron Registration</a></li>
+		<li role="presentation" class="active"><a href="/index.php">Home</a></li>
+		<li role="presentation"><a href="/registration.php">Patron Registration</a></li>
 		<li role="presentation"><a href="#">Profile</a></li>
 		<li role="presentation"><a href="#">Profile</a></li>
 		<li role="presentation"><a href="#">Profile</a></li>
