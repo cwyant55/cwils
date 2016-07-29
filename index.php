@@ -38,28 +38,47 @@ $yesterday = mysqli_num_rows($res);
 	<div class="row">
 	<div class="container col-md-6">
 	
-<div id="chartContainer"></div>
-<script type="text/javascript">
-window.onload = function () {
-	var chart = new CanvasJS.Chart("chartContainer",
-	{
-		animationEnabled: true,
-		title:{
-			text: "New Patron Registrations"
-		},
-		data: [
-		{
-			type: "column", //change type to bar, line, area, pie, etc
-			dataPoints: [
-				{ label: "Yesterday", y: <?php print($yesterday); ?> },
-				{ label: "Today", y: <?php print($today); ?> },
-			]
-		}
-		]
-	});
-
-	chart.render();
-}
+<!-- Dashboard chart thingy -->
+<canvas id="myChart" width="400" height="400"></canvas>
+<script>
+var ctx = document.getElementById("myChart");
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ["Yesterday", "Today"],
+        datasets: [{
+            label: 'New Patron Registrations',
+            data: [<?php print($yesterday); ?>, <?php print($today); ?>],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        }
+    }
+});
+</script>
 </script>
 	</div>
 	

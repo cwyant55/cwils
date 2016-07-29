@@ -12,7 +12,7 @@ include "Include/conn.php";
     <link href="css/bootstrap.css" rel="stylesheet" media="screen">
     <link href="css/main.css" rel="stylesheet" media="screen">
 	<script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/canvasjs/1.7.0/canvasjs.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.0/Chart.bundle.js"></script>
   </head>
 
 <body>
@@ -29,9 +29,9 @@ include "Include/conn.php";
 	<div class="row">
 	<div class="container col-md-2"><!-- Main nav -->
 	<ul class="nav nav-pills nav-stacked">
-		<li role="presentation" class="active"><a href="/index.php">Home</a></li>
-		<li role="presentation"><a href="/registration.php">Patron Registration</a></li>
-		<li role="presentation"><a href="#">Profile</a></li>
+		<li role="presentation" class="active"><a href="index.php">Home</a></li>
+		<li role="presentation"><a href="registration.php">Patron Registration</a></li>
+		<li role="presentation"><a href="checkout.php">Checkout</a></li>
 		<li role="presentation"><a href="#">Profile</a></li>
 		<li role="presentation"><a href="#">Profile</a></li>
 		<li role="presentation"><a href="login/logout.php">Logout</a></li>

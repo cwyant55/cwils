@@ -24,20 +24,33 @@ function db_error() {
 function db_select($query) {
     $rows = array();
     $result = db_query($query);
-	
 		if($result === false) {
         return false;
 		}
-		
     while ($row = mysqli_fetch_assoc($result)) {
         $rows[] = $row;
     }
     return $rows;
 }
 
-/* $rows = db_select("SELECT `name`,`email` FROM `users` WHERE id=5");
-*if($rows === false) {
-*    $error = db_error();
-*    // Handle error - inform administrator, log to file, show error page, etc.
-} */
+function getPatronByBarcode($barcode) {
+	$query = "SELECT * FROM `patrons` WHERE `barcode` = '$barcode' LIMIT 1";
+	$result = db_select($query);
+	$flat = call_user_func_array('array_merge', $result);	
+	return $flat;
+}
+
+function getItem($barcode) {
+	$query = "SELECT * FROM `items` WHERE `barcode` = '$barcode' LIMIT 1";
+	$result = db_select($query);
+	$flat = call_user_func_array('array_merge', $result);	
+	return $flat;
+}
+
+function checkoutItems ($items) {
+	
+	
+	
+}
+
 ?>

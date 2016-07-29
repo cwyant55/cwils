@@ -29,3 +29,10 @@ foreach ($rows as $value) {
 }
 echo mysqli_num_rows($res);
 ?>
+
+
+// return single value
+function getPatron2 ($barcode) {
+	$name = db_query("SELECT * FROM `patrons` WHERE `barcode` = '$barcode' LIMIT 1")->fetch_object()->name;  
+	return $name;
+}
