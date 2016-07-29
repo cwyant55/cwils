@@ -1,0 +1,31 @@
+<?php 
+   $rows = db_select("SELECT * FROM `members`");
+if($rows === false) {
+    $error = db_error();
+}
+
+foreach ($rows as $value) {	
+	echo 'User ' .$value["username"] . ' has email: ' . $value["email"];
+}
+
+?>
+
+// Another example with count
+<?php 
+	$rows = db_select("SELECT * FROM `members`");
+		if($rows === false) {
+		$error = db_error();
+}
+		
+foreach ($rows as $value) {	
+	echo 'User ' .$value["username"] . ' has email: ' . $value["email"];
+}
+?>
+
+<?php 
+	$res = db_query("SELECT * FROM `members`");
+		if($res === false) {
+		$error = db_error();
+}
+echo mysqli_num_rows($res);
+?>
