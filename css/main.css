@@ -60,3 +60,7 @@ body {
   margin: 1px;
   color: white;
 }
+
+.hidden {
+	display: none;
+}

@@ -36,15 +36,25 @@ function db_select($query) {
 function getPatronByBarcode($barcode) {
 	$query = "SELECT * FROM `patrons` WHERE `barcode` = '$barcode' LIMIT 1";
 	$result = db_select($query);
-	$flat = call_user_func_array('array_merge', $result);	
+		if(!$result) { // error handling
+			return null;
+		}
+	else {
+	$flat = call_user_func_array('array_merge', $result);
 	return $flat;
+	}
 }
 
 function getItem($barcode) {
 	$query = "SELECT * FROM `items` WHERE `barcode` = '$barcode' LIMIT 1";
 	$result = db_select($query);
+			if(!$result) { // error handling
+			return null;
+		}
+	else {
 	$flat = call_user_func_array('array_merge', $result);	
 	return $flat;
+}
 }
 
 function checkoutItems ($items) {

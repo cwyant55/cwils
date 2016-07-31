@@ -4,71 +4,90 @@ $title = "Checkout";
 require "Include/header.php";
 ?>
 
+<!-- check for patron barcode in URL -->
+<?php if(isset($_GET['id'])) {
+	$id = $_GET['id'];
+	$patron = getPatronbyBarcode($id);
+	if(!$patron) {
+		$msg = "Patron <i>" . $id . "</i> not found.";
+		}
+	}
+?>
+
+<!-- patron lookup from form submit -->
+<?php if(isset($_POST['action']) && $_POST['action'] == "checkout") {
+	$barcode = $_POST['InputBarcode'];
+	$patron = getPatronByBarcode($barcode);
+	if(!$patron) {
+		$msg = "Patron <i>" . $barcode . "</i> not found.";
+	}
+}
+?>
+
+<!-- more head tags -->
+<script src="js/magic.js"></script>
+<?php include "Include/nav.php"; ?>
+
 	<div class="row">
 	<div class="container col-md-6">
 		<div class="panel panel-default">
 		<div class="panel-body">
 		<h1>Checkout</h1>
-		<form method="post" action="" id="patron-lookup">
-		<input type="hidden" name="action" value="get-patron" /><!-- for processing -->
+		
+		<!-- print error message if patron not found -->
+		<div id="patron-lookup-wrapper">
+		<?php if(isset($msg)) { ?>		
+		<div class="alert alert-danger"><?php print($msg); ?></div>
+		<?php } // if
+		
+		?><!-- patron lookup form --><?php
+		if(!isset($patron)) { ?>	
+		
+		<form name="patron-lookup" method="post" id="patron-lookup" action="<?php echo $_SERVER['PHP_SELF']; ?>">
 		<div class="form-group">
 			<input type="text" class="form-control" name="InputBarcode" placeholder="Enter Patron Barcode" required>
+			<input type="hidden" name="action" value="checkout" /><!-- for processing -->
 			</div>
-		<input type="submit" name="get-patron" value="Submit" />
-		</form>
-		
-		
-	<?php //process form action
-		if(isset($_POST['action'])) {
-			switch($_POST['action']) {
-			case 'get-patron' : ?>
-			<script>
-				$("#patron-lookup").hide();
-			</script>
-		<?php $barcode = $_POST['InputBarcode'];
-		$patron = getPatronbyBarcode($barcode); 
-		?>
-		<h3>Patron: <?php print($patron['name']); ?></h3>
-		
-		<!-- checkout single item form -->
-		<form method="post" action="" id="checkout-item">
-		<input type="hidden" name="action" value="checkout" /><!-- for processing -->
-		<div class="row">
-		<div class="col-md-6">
-			<div class="form-group InputBlock">
-			<input type="text" class="form-control" name="InputItemBarcode[]" placeholder="Enter Item Barcode">
-			</div>
-		</div>
+       <input type="submit" class="btn btn-success" value="Submit">
+		</form><!-- Patron lookup form -->
 		</div>
 		
-		<input type="button" id="more" value="Submit" /><!-- submit for each item -->
-		<input type="submit" id="submit" value="Done" /><!-- Display receipt and reset form -->
-		</form>
-		
-		<?php break;
-			
-			case 'checkout' : //submit checkout
-				?><p><?php var_dump($patron);?></p>
-				
-				Patron <?php print($patron['name']); ?> with barcode <?php print($barcode);?> checked out the following items:
-				<ul>
-				<?php foreach($_POST['InputItemBarcode'] as $value) {
-					//get item info, insert into transactions
-					?><li><?php print($value); ?></li><?php
-				}
-			break;
-		}
-		
-		}
-		?>
-		
-		</div>
-		</div>
-	</div>
-	</div>
+	<?php } ?><!-- if -->
+		<!-- item checkout form -->
+		<?php if(isset($patron)) { ?>
+		<div id="checkout-form-wrapper">
 
+			<!-- hide patron lookup form -->
+			<script>
+			$("#patron-lookup").hide();
+			</script>
+			<h3>Patron: <?php print($patron['name']); ?></h3>
+			
+			<!-- form id is used to identify form in magic.js -->
+			<form action="processCheckout.php" method="POST" id="checkout" class="process">
+			
+			<!-- Item Barcode -->
+			<div id="itemBarcode-group" class="form-group">
+            <label for="itemBarcode">Enter Item Barcode</label>
+            <input type="text" class="form-control" name="itemBarcode" placeholder="1000X">
+            <!-- errors will go here -->
+			<input type="hidden" name="patronBarcode" value="<?php print($patron['barcode']); ?>">
+        </div>
+
+       <button type="submit" class="btn btn-success">Submit <span class="fa fa-arrow-right"></span></button>
+		
+		</form>
+
+			
+			
+			</div><!-- checkout form wrapper -->
+		<?php } ?> <!-- if -->
+		
+		
+		</div><!-- panel body -->
+	</div>
+	</div>
+	</div>
 </div><!-- end nav row -->
 
-   
-   
 <?php require "Include/footer.php"; ?>
