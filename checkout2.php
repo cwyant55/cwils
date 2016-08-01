@@ -64,24 +64,22 @@ require "Include/header.php";
 			<h3>Patron: <?php print($patron['name']); ?></h3>
 			
 			<!-- form id is used to identify form in magic.js -->
-			<form action="process.php" method="POST" id="checkout" class="process">
+			<form action="processCheckout.php" method="POST" id="checkout" class="process">
 			
 			<!-- Item Barcode -->
-			<div id="barcode-group" class="form-group">
-            <label for="barcode">Enter Item Barcode</label>
-            <input type="text" class="form-control" name="barcode" placeholder="1000X">
+			<div id="itemBarcode-group" class="form-group">
+            <label for="itemBarcode">Enter Item Barcode</label>
+            <input type="text" class="form-control" name="itemBarcode" placeholder="1000X">
             <!-- errors will go here -->
 			<input type="hidden" name="patronBarcode" value="<?php print($patron['barcode']); ?>">
         </div>
 
-		<!-- Required fields to POST -->
-		<input type="hidden" name="required" value="barcode">
-		<input type="hidden" name="formtype" value="checkout">
-		
        <button type="submit" class="btn btn-success">Submit <span class="fa fa-arrow-right"></span></button>
 		
 		</form>
 
+			
+			
 			</div><!-- checkout form wrapper -->
 		<?php } ?> <!-- if -->
 		

@@ -1,0 +1,35 @@
+<html>
+<head>
+<script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
+</head>
+
+<body>
+
+
+<div id="placeholder">
+</div>
+
+
+<script>
+var data = {name: {errors:"There was an error"}, item1: {test:"moretest", errors:"Item1 error"}};
+var msg = "";
+var i = 0;
+var key = "";
+
+msg = Object.keys(data);
+
+var q = msg.length; 
+for (i = "0"; i < q; ++i) {
+	key = msg[i];
+	$('#placeholder').append(data[key].errors + '<br/>');
+}
+
+
+//$('#placeholder').append(teee);
+
+</script>
+
+
+
+</body>
+</html>

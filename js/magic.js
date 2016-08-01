@@ -5,19 +5,14 @@ $(document).ready(function() {
 		
 		$('.form-group').removeClass('has-error'); // remove the error class
 		$('.help-block').remove(); // remove the error text
+		$('.alert-success').remove(); // remove previous successful alerts
+		$('.results-found').remove(); // remove results found message for multiple searces
 		
 		// form action goes to ajax url
-		var formAction = $(this).attr("action"); 
-		
-		// form id for success message
-		if ($(this).attr("id") == "registration") {
-			var msg = "registration";
-		} 
-		
-		// form id for success message
-		if ($(this).attr("id") == "checkout") {
-			var msg = "checkout";
-		} 
+		var formAction = $(this).attr("action");
+
+		// form id attribute used to select success/error message
+		var formId = $(this).attr("id"); 
 		
         // get the form data
 		var fd = new FormData();
@@ -43,42 +38,53 @@ $(document).ready(function() {
                 // log data to the console so we can see
                 console.log(data);
 				console.log(fd);
+				
 		// here we will handle errors and validation messages
         if ( ! data.success) {
             
             // handle errors ---------------		
-			if (data.errors.name) {
-                $('#name-group').addClass('has-error'); // add the error class to show red input
-                $('#name-group').append('<div class="help-block">' + data.errors.name + '</div>'); // add the actual error message under our input
-            }
-
-            // handle errors for barcode ---------------
-            if (data.errors.barcode) {
-                $('#barcode-group').addClass('has-error'); // add the error class to show red input
-                $('#barcode-group').append('<div class="help-block">' + data.errors.barcode + '</div>'); // add the actual error message under our input
-            }
 			
-			 // handle errors for itemBarcode ---------------
-            if (data.errors.itemBarcode) {
-                $('#itemBarcode-group').addClass('has-error'); // add the error class to show red input
-                $('#itemBarcode-group').append('<div class="help-block">' + data.errors.itemBarcode + '</div>'); // add the actual error message under our input
-            }
-
+			// loop for handling errors
+			var i = 0;
+			var key = "";
+			var errorName = "";
+			var keys = Object.keys(data.errors);
+			var q = keys.length; 
+			
+			for (i = "0"; i < q; ++i) {
+			key = keys[i];
+			errorName = '#' + key + '-group';
+			
+			 $(errorName).addClass('has-error'); // add the error class to show red input
+             $(errorName).append('<div class="help-block">' + data.errors[key] + '</div>');
+			}
         } else {
 
 		
-		if (msg == "registration")
+		if (formId == "registration")
 		{
-			msg = "<p>Patron <i>" + data.name + "</i> registered with barcode <i> " + data.barcode + ".</p>";			
+			var msg = "<p>Patron <i>" + data.name + "</i> registered with barcode <i> " + data.barcode + ".</p>";			
 		}
 		
-		if (msg == "checkout")
+		if (formId == "checkout")
 		{
-			msg = "<p>Item <i>" + data.item[0].title + "</i> with barcode <i>" + data.itemBarcode + " </i> successfully checked out.</p>";			
+			var msg = "<p>Item <i>" + data.item[0].title + "</i> with barcode <i>" + data.barcode + " </i> successfully checked out.</p>";			
 		}
 		
-            // ALL GOOD! just show the success message!			
-            $('form').append('<div class="alert alert-success">' + msg + '</div>');
+		if (formId == "patron-lookup")
+		{
+				var msg = [];
+				for (i=0; i < data.patron[0].length; i++) {
+				msg.push('Name: ' + data.patron[0][i].name + '<br/>Barcode: ' + '<a href="patron-info.php?id=' + data.patron[0][i].barcode + '">' + data.patron[0][i].barcode + '</a>');
+				}
+			$('form').append('<h3><span class="results-found">Results found!</span></h3>');
+		}
+		
+            // ALL GOOD! just show the success message!
+
+			for (i=0; i < msg.length; i++) {
+            $('form').append('<div class="alert alert-success">' + msg[i] + '</div>');
+			}
 
             // usually after form submission, you'll want to redirect
             // window.location = '/thank-you'; // redirect a user to another page

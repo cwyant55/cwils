@@ -1,0 +1,35 @@
+<html>
+<head>
+<script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
+</head>
+
+<body>
+
+
+<div id="name-group">Name group:
+</div>
+
+<div id="item2-group">item2 group:</div>
+
+
+<script>
+var data = {errors: {name:"Name error message.", item2:"Item2 here!"}};
+var i = 0;
+var key = "";
+var errorName = "";
+
+var msg = Object.keys(data.errors);
+
+var q = msg.length; 
+for (i = "0"; i < q; ++i) {
+	key = msg[i];
+	errorName = '#' + key + '-group';
+	$(errorName).append(data.errors[key] + '<br/>');
+	console.log(errorName);
+}
+</script>
+
+
+
+</body>
+</html>

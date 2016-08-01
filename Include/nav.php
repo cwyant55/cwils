@@ -17,7 +17,7 @@
 		<li role="presentation" class="active"><a href="index.php">Home</a></li>
 		<li role="presentation"><a href="registration.php">Patron Registration</a></li>
 		<li role="presentation"><a href="checkout.php">Checkout</a></li>
-		<li role="presentation"><a href="#">Profile</a></li>
+		<li role="presentation"><a href="patron-lookup.php">Patron Lookup</a></li>
 		<li role="presentation"><a href="#">Profile</a></li>
 		<li role="presentation"><a href="login/logout.php">Logout</a></li>
 	</ul>
