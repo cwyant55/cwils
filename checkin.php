@@ -19,7 +19,7 @@ require(dirname(__FILE__) . "/Include/header.php");
 	<div class="container col-md-6">
 		<form action="process.php" method="POST" id="checkin" class="process">
 	
-		<div id="barcode-group" class="form-group">
+		<div id="farts-group" class="form-group">
             <label for="barcode">Barcode</label>
             <input type="text" class="form-control" name="barcode" placeholder="0000X">
             <!-- errors will go here -->

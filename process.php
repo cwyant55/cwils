@@ -1,6 +1,8 @@
 <?php
 include(dirname(__FILE__) . "/Include/conn.php");
 
+//unset($errors);
+//unset($data);
 $errors         = array();      // array to hold validation errors
 $data           = array();      // array to pass back data
 
@@ -27,15 +29,14 @@ $data           = array();      // array to pass back data
 	// check for multiple required fields
 	if (isset($_POST['required'])) {
 		$keys = $_POST['required'];
-		$required = explode(",", $keys);
+		$required = explode("," , $keys);
 	
 	// print error message for empty required fields
-	foreach ($required as $value)
-	{
-		if (!isset($_POST[$value])) {
+		foreach ($required as $value) {
+		if (!$_POST[$value]) {
 			$errors[$value] = ucfirst($value) . ' is required.';
 		}
-	}
+	}	
 	} // if
 	
 	// checkout form, make sure item exists and is available
@@ -70,9 +71,11 @@ $data           = array();      // array to pass back data
 			if (!$res) {
 			$errors['barcode'] = "Item not found.";
 			}
-			if ($res['available'] == "1") {
+			elseif ($res['available'] == "1") {
 			$errors['barcode'] = "Item was not checked out.";
 			}
+			else { // no errors }
+	}
 	}
 	
 	// new item form, make sure barcode does not exist
@@ -159,7 +162,7 @@ $data           = array();      // array to pass back data
 		// assign variables (should be able to automate this)
 		$title = $data['title'] = $_POST['title'];
 		$checkoutlength = $data['checkoutlength'] = $_POST['checkoutlength'];
-			
+		
 		// insert item data
 		$query = "INSERT INTO items (barcode, title, checkoutlength, available) VALUES ('$barcode', '$title', '$checkoutlength', '1')";
 		db_query($query);
@@ -207,4 +210,5 @@ $data           = array();      // array to pass back data
     }
 
     // return all our data to an AJAX call
-    echo json_encode($data);
+echo json_encode($data);
+?>
