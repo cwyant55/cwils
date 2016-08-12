@@ -1,7 +1,7 @@
 <?php 
 // Page title
 $title = "Checkout";
-require "Include/header.php";
+require(dirname(__FILE__) . "/Include/header.php");
 ?>
 
 <!-- check for patron barcode in URL -->
@@ -25,8 +25,8 @@ require "Include/header.php";
 ?>
 
 <!-- more head tags -->
-<script src="js/magic.js"></script>
-<?php include "Include/nav.php"; ?>
+<script src="../js/magic.js"></script>
+<?php require(dirname(__FILE__) . "/Include/nav.php"); ?>
 
 	<div class="row">
 	<div class="container col-md-6">
@@ -92,4 +92,4 @@ require "Include/header.php";
 	</div>
 </div><!-- end nav row -->
 
-<?php require "Include/footer.php"; ?>
+<?php require(dirname(__FILE__) . "/Include/footer.php"); ?>

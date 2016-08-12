@@ -1,5 +1,7 @@
-<?php require "login/loginheader.php";
-include "Include/conn.php";
+<?php 
+require(dirname(__DIR__) . "/login/loginheader.php");
+include(dirname(__DIR__) . "/Include/conn.php");
+
 ?>
 
 <!DOCTYPE html>
@@ -9,6 +11,6 @@ include "Include/conn.php";
     <title><?php print($title);?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
-    <link href="css/bootstrap.css" rel="stylesheet" media="screen">
-    <link href="css/main.css" rel="stylesheet" media="screen">
-	<script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
+    <link href="../css/bootstrap.css" rel="stylesheet" media="screen">
+    <link href="../css/main.css" rel="stylesheet" media="screen">
+	<script type="text/javascript" src="../js/jquery-3.1.0.min.js"></script>

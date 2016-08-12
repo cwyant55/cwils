@@ -57,10 +57,15 @@ function getItem($barcode) {
 }
 }
 
-function checkoutItems ($items) {
-	
-	
-	
+function getItemsOut($patron) {
+	$query = "SELECT * FROM `transactions` WHERE `patron` = '$patron'";
+	$result = db_select($query);
+			if(!$result) { // error handling
+			return null;
+}
+else {
+	return $result;
+	}
 }
 
 ?>

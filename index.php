@@ -1,13 +1,13 @@
 <?php 
 // Page title
 $title = "Home";
-require "Include/header.php";
+require(dirname(__FILE__) . "/Include/header.php");
 ?>
 
 <!-- extra head tags -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.0/Chart.bundle.js"></script>
 
-<?php require "Include/nav.php"; ?>
+<?php require(dirname(__FILE__) . "/Include/nav.php"); ?>
  
 <?php // get # patrons
 $res = db_query("SELECT * FROM `patrons`");
@@ -94,4 +94,4 @@ var myChart = new Chart(ctx, {
 
    
    
-<?php require "Include/footer.php"; ?>
+<?php require(dirname(__FILE__) . "/Include/footer.php"); ?>

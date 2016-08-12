@@ -1,7 +1,5 @@
 <?php
-include "Include/conn.php";
-
-// form currently working for patron registration only
+include(dirname(__FILE__) . "/Include/conn.php");
 
 $errors         = array();      // array to hold validation errors
 $data           = array();      // array to pass back data
@@ -51,6 +49,39 @@ $data           = array();      // array to pass back data
 			if ($res['available'] == "0") {
 			$errors['barcode'] = "Item is checked out.";
 			}
+		else {
+			$title = $res['title'];
+				if ($res['checkoutlength'] == "3week") {
+				$duedate = date('Y-m-d G:i:s', strtotime('+3 Week'));
+				}
+				elseif ($res['checkoutlength'] == "2week") {
+				$duedate = date('Y-m-d G:i:s', strtotime('+2 Week'));
+				}
+				else {
+				$duedate = date('Y-m-d G:i:s', strtotime('+1 Week'));
+				}
+		}
+	}
+	
+	// checkin form, make sure item exists and was checked out
+	if ($_POST['formtype'] == "checkin") {
+		$barcode = $data['barcode'] = $_POST['barcode'];
+		$res = getItem($barcode);
+			if (!$res) {
+			$errors['barcode'] = "Item not found.";
+			}
+			if ($res['available'] == "1") {
+			$errors['barcode'] = "Item was not checked out.";
+			}
+	}
+	
+	// new item form, make sure barcode does not exist
+	if ($_POST['formtype'] == "new-item") {
+		$barcode = $data['barcode'] = $_POST['barcode'];
+		$res = getItem($barcode);
+			if ($res) {
+			$errors['barcode'] = "Item barcode already in use.";
+			}
 	}
 	
 // return a response ===========================================================
@@ -82,13 +113,55 @@ $data           = array();      // array to pass back data
 		
 		if ($_POST['formtype'] == "checkout") {
 		// create transaction record
-        $query = "INSERT INTO transactions (patron, item) VALUES ('$patronBarcode', '$barcode')";
+        $query = "INSERT INTO transactions (patron, item, title, duedate) VALUES ('$patronBarcode', '$barcode', '$title', '$duedate')";
 		db_query($query);
 		
 		// error handling
 		
 		// set item availability as checked out
 		$query = "UPDATE items SET available='0' WHERE barcode='$barcode'";
+		db_query($query);
+		
+		// error handling
+		
+		// include item data in data array
+		$data['item'] = array($res);
+		
+		// show a message of success and provide a true success variable
+        $data['success'] = true;
+        $data['message'] = 'Success!';
+		
+		} // checkout
+		
+		if ($_POST['formtype'] == "checkin") {
+		// update transaction record with checkin timestamp and anonymize patron barcode
+        $query = "UPDATE transactions SET patron = '-1', checkedin = now() WHERE item='$barcode'";
+		db_query($query);
+		
+		// error handling
+		
+		// set item availability as checked in
+		$query = "UPDATE items SET available='1' WHERE barcode='$barcode'";
+		db_query($query);
+		
+		// error handling
+		
+		// include item data in data array
+		$data['item'] = array($res);
+		
+		// show a message of success and provide a true success variable
+        $data['success'] = true;
+        $data['message'] = 'Success!';
+		
+		} // checkin
+		
+		if ($_POST['formtype'] == "new-item") {
+		// assign variables (should be able to automate this)
+		$title = $data['title'] = $_POST['title'];
+		$checkoutlength = $data['checkoutlength'] = $_POST['checkoutlength'];
+			
+		// insert item data
+		$query = "INSERT INTO items (barcode, title, checkoutlength, available) VALUES ('$barcode', '$title', '$checkoutlength', '1')";
 		db_query($query);
 		
 		// error handling
@@ -131,9 +204,7 @@ $data           = array();      // array to pass back data
 		
 		} // patron lookup
 		
-
-
     }
-	
+
     // return all our data to an AJAX call
     echo json_encode($data);

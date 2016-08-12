@@ -64,11 +64,25 @@ $(document).ready(function() {
 		if (formId == "registration")
 		{
 			var msg = "<p>Patron <i>" + data.name + "</i> registered with barcode <i> " + data.barcode + ".</p>";			
+			$('form').append('<div class="alert alert-success">' + msg + '</div>');
 		}
 		
 		if (formId == "checkout")
 		{
-			var msg = "<p>Item <i>" + data.item[0].title + "</i> with barcode <i>" + data.barcode + " </i> successfully checked out.</p>";			
+			var msg = "<p>Item <i>" + data.item[0].title + "</i> with barcode <i>" + data.barcode + " </i> successfully checked out.</p>";
+			$('form').append('<div class="alert alert-success">' + msg + '</div>');			
+		}
+		
+		if (formId == "checkin")
+		{
+			var msg = "<p>Item <i>" + data.item[0].title + "</i> with barcode <i>" + data.barcode + " </i> successfully checked in.</p>";
+			$('form').append('<div class="alert alert-success">' + msg + '</div>');			
+		}
+		
+		if (formId == "new-item")
+		{
+			var msg = "<p>Item <i>" + data.item[0].title + "</i> with barcode <i>" + data.barcode + " </i> successfully created.</p>";
+			$('form').append('<div class="alert alert-success">' + msg + '</div>');			
 		}
 		
 		if (formId == "patron-lookup")
@@ -78,13 +92,18 @@ $(document).ready(function() {
 				msg.push('Name: ' + data.patron[0][i].name + '<br/>Barcode: ' + '<a href="patron-info.php?id=' + data.patron[0][i].barcode + '">' + data.patron[0][i].barcode + '</a>');
 				}
 			$('form').append('<h3><span class="results-found">Results found!</span></h3>');
+			
+				for (i=0; i < msg.length; i++) {
+            $('form').append('<div class="alert alert-success">' + msg[i] + '</div>');
+			}
+			
 		}
+		
+		
 		
             // ALL GOOD! just show the success message!
 
-			for (i=0; i < msg.length; i++) {
-            $('form').append('<div class="alert alert-success">' + msg[i] + '</div>');
-			}
+		
 
             // usually after form submission, you'll want to redirect
             // window.location = '/thank-you'; // redirect a user to another page

@@ -1,12 +1,12 @@
 <?php 
 // Page title
 $title = "Patron Lookup";
-require "Include/header.php";
+require(dirname(__FILE__) . "/Include/header.php");
 ?>
 
 <!-- extra head tags -->
-<script src="js/magic.js"></script>
-<?php require "Include/nav.php"; ?>
+<script src="../js/magic.js"></script>
+<?php require(dirname(__FILE__) . "/Include/nav.php"); ?>
 
 <div class="container col-md-8">
 	<div class="panel panel-default">
@@ -46,4 +46,4 @@ require "Include/header.php";
 </div>
 </div><!-- end nav row -->
    
-<?php require "Include/footer.php"; ?>
+<?php require(dirname(__FILE__) . "/Include/footer.php"); ?>
