@@ -53,7 +53,7 @@ $msg = array("msg" => "", "errors" => "");
 		<div class="alert alert-warning"><?php echo $msg['msg']; ?></div>
 		<form action="patron-info.php" method="GET">
 		<div id="barcode-group" class="form-group">
-        <input type="text" class="form-control" name="id" placeholder="0000X">
+        <input type="text" class="form-control" name="id" placeholder="0000X" required>
         </div>
 		<button type="submit" class="btn btn-success">Submit <span class="fa fa-arrow-right"></span></button>
 		</form>

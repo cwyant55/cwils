@@ -81,7 +81,7 @@ $(document).ready(function() {
 		
 		if (formId == "new-item")
 		{
-			var msg = "<p>Item <i>" + data.item[0].title + "</i> with barcode <i>" + data.barcode + " </i> successfully created.</p>";
+			var msg = "<p>Item <i>" + data.title + "</i> with barcode <i>" + data.barcode + " </i> successfully created.</p>";
 			$('form').append('<div class="alert alert-success">' + msg + '</div>');			
 		}
 		
@@ -99,11 +99,7 @@ $(document).ready(function() {
 			
 		}
 		
-		
-		
             // ALL GOOD! just show the success message!
-
-		
 
             // usually after form submission, you'll want to redirect
             // window.location = '/thank-you'; // redirect a user to another page

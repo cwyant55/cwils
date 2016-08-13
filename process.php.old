@@ -30,7 +30,7 @@ $data           = array();      // array to pass back data
 	// check for multiple required fields
 	if (isset($_POST['required'])) {
 		$keys = $_POST['required'];
-		$required = explode(",", $keys);
+		$required = explode("," , $keys);
 	
 	// print error message for empty required fields
 		foreach ($required as $value) {
@@ -39,9 +39,6 @@ $data           = array();      // array to pass back data
 		}
 	}	
 	} // if
-	
-	// proceed if no errors
-	if (!$errors) {
 	
 	// checkout form, make sure item exists and is available
 	if ($_POST['formtype'] == "checkout") {
@@ -90,16 +87,15 @@ $data           = array();      // array to pass back data
 			$errors['barcode'] = "Item barcode already in use.";
 			}
 	}
-} // if
 	
 // return a response ===========================================================
 
     // if there are any errors in our errors array, return a success boolean of false
-    if (!empty($errors)) {
+    if ( ! empty($errors)) {
 
         // if there are items in our errors array, return those errors
         $data['success'] = false;
-        $data['errors'] = $errors;
+        $data['errors']  = $errors;
 		
     } else {
 
