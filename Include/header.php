@@ -1,6 +1,7 @@
 <?php 
 require(dirname(__DIR__) . "/login/loginheader.php");
 include(dirname(__DIR__) . "/Include/conn.php");
+include(dirname(__DIR__) . "/Include/solr.php");
 
 ?>
 

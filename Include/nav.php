@@ -21,6 +21,7 @@
 		<li role="presentation"><a href="/checkin.php">Checkin</a></li>
 		<li role="presentation"><a href="/patron-lookup.php">Patron Lookup</a></li>
 		<li role="presentation"><a href="/patron-info.php">Patron Info</a></li>
+		<li role="presentation"><a href="/admin">Admin</a></li>
 		<li role="presentation"><a href="/login/logout.php">Logout</a></li>
 	</ul>
 	</div><!-- nav -->
