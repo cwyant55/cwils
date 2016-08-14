@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record xmlns="http://www.loc.gov/MARC21/slim">
+  <leader>01412ntm a22003017a 4500</leader>
+  <controlfield tag="001">3112448</controlfield>
+  <controlfield tag="008">090115s1846    nik           000 i eng d</controlfield>
+  <datafield tag="033" ind1="0" ind2="0">
+    <subfield code="a">18460101</subfield>
+  </datafield>
+  <datafield tag="040" ind1=" " ind2=" ">
+    <subfield code="a">BRL</subfield>
+  </datafield>
+  <datafield tag="099" ind1=" " ind2=" ">
+    <subfield code="a">Ms.A.1.2 v.16, p.1</subfield>
+  </datafield>
+  <datafield tag="100" ind1="1" ind2=" ">
+    <subfield code="a">Douglass, Frederick,</subfield>
+    <subfield code="d">1818-1895.</subfield>
+  </datafield>
+  <datafield tag="245" ind1="1" ind2="0">
+    <subfield code="a">[Letter to William Lloyd Garrison]</subfield>
+    <subfield code="h">[manuscript].</subfield>
+  </datafield>
+  <datafield tag="260" ind1=" " ind2=" ">
+    <subfield code="a">Belfast, [Northern Ireland],</subfield>
+    <subfield code="c">[Jan. 1, 1846].</subfield>
+  </datafield>
+  <datafield tag="300" ind1=" " ind2=" ">
+    <subfield code="a">1 leaf (2 p.)</subfield>
+  </datafield>
+  <datafield tag="500" ind1=" " ind2=" ">
+    <subfield code="a">Holograph, signed.</subfield>
+  </datafield>
+  <datafield tag="500" ind1=" " ind2=" ">
+    <subfield code="a">First page of letter is missing. For the complete letter, see The Liberator, January 30, 1846.</subfield>
+  </datafield>
+  <datafield tag="520" ind1="0" ind2=" ">
+    <subfield code="a">Frederick Douglass compares his reception in Europe with that of the United States. He tells about his visit to Eton Hall.</subfield>
+  </datafield>
+  <datafield tag="600" ind1="1" ind2="0">
+    <subfield code="a">Garrison, William Lloyd,</subfield>
+    <subfield code="d">1805-1879</subfield>
+    <subfield code="v">Correspondence.</subfield>
+  </datafield>
+  <datafield tag="600" ind1="1" ind2="0">
+    <subfield code="a">Douglass, Frederick,</subfield>
+    <subfield code="d">1818-1895</subfield>
+    <subfield code="v">Correspondence.</subfield>
+  </datafield>
+  <datafield tag="650" ind1=" " ind2="0">
+    <subfield code="a">Antislavery movements</subfield>
+    <subfield code="z">United States</subfield>
+    <subfield code="x">History</subfield>
+    <subfield code="y">19th century.</subfield>
+  </datafield>
+  <datafield tag="650" ind1=" " ind2="0">
+    <subfield code="a">Abolitionists</subfield>
+    <subfield code="z">United States</subfield>
+    <subfield code="y">19th century</subfield>
+    <subfield code="v">Correspondence.</subfield>
+  </datafield>
+  <datafield tag="655" ind1=" " ind2="0">
+    <subfield code="a">Letters.</subfield>
+  </datafield>
+  <datafield tag="655" ind1=" " ind2="0">
+    <subfield code="a">Manuscripts.</subfield>
+  </datafield>
+  <datafield tag="700" ind1="1" ind2="0">
+    <subfield code="a">Garrison, William Lloyd,</subfield>
+    <subfield code="d">1805-1879.</subfield>
+    <subfield code="e">recipient</subfield>
+  </datafield>
+  <datafield tag="830" ind1=" " ind2="0">
+    <subfield code="a">William Lloyd Garrison Correspondence (1823-1879)</subfield>
+  </datafield>
+  <datafield tag="914" ind1=" " ind2=" ">
+    <subfield code="a">3919803</subfield>
+  </datafield>
+  <datafield tag="852" ind1=" " ind2=" ">
+    <subfield code="a">BPL - Special Collections </subfield>
+    <subfield code="b">Manuscript - In Library Use Only</subfield>
+    <subfield code="h">Ms.A.1.2</subfield>
+    <subfield code="i">p.1 2012</subfield>
+    <subfield code="k">RARE BKS Mss.</subfield>
+    <subfield code="m">v.16,</subfield>
+    <subfield code="o">9</subfield>
+    <subfield code="p">39999066767938</subfield>
+    <subfield code="r">Non-circulating</subfield>
+    <subfield code="w">Manuscript</subfield>
+    <subfield code="y">1</subfield>
+    <subfield code="9">0</subfield>
+  </datafield>
+  <datafield tag="999" ind1=" " ind2=" ">
+    <subfield code="b">Ms.A.1.2 v.16, p.1</subfield>
+    <subfield code="c">0</subfield>
+    <subfield code="g">1</subfield>
+    <subfield code="h">1</subfield>
+    <subfield code="i">1</subfield>
+    <subfield code="j">1</subfield>
+    <subfield code="k">0</subfield>
+    <subfield code="x">Ms.A.1.2 v.16, p.1</subfield>
+  </datafield>
+</record>

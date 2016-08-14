@@ -12,7 +12,7 @@ $client = new SolrClient($options);
 return $client;
 }
 
-function solrTest ($test) {
+function solrSearch ($test) {
 	$client = solrClient();
 	$query = new SolrQuery();
 	$query->setQuery($test);
