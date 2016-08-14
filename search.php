@@ -42,7 +42,7 @@ include(dirname(__FILE__) . "/Include/header.php");
 		</form>
 	</div>
 	</div>
-	<div class="col-md-6">
+	<div class="col-md-8">
 		
 <?php // search processing
 	if (!empty($_GET)) {
@@ -62,7 +62,6 @@ include(dirname(__FILE__) . "/Include/header.php");
 				
 		// run the query
 		$results = solrSearch($query);
-	}
 
 if ($results) { ?>
 	<h2>Search results for <?php echo '<i>' . $searchtype . ' "' . $terms . '"</i>'; ?>:</h2>
@@ -71,7 +70,7 @@ if ($results) { ?>
 <?php 
 $i = 1;
 foreach ($results as $result) {
-	echo '<tr><td>' . $i . '</td><td><a href="#">' . $result['title'] . '</a></td><td>' . $result['id'] . '</td></tr>';
+	echo '<tr><td>' . $i . '</td><td><a href="#">' . $result['title'] . '</a></td><td>' . $result['barcode'] . '</td></tr>';
 	$i++;
 	
 	} ?>
@@ -81,6 +80,7 @@ else {
 	echo 'No results.';
 }
 
+	} // if
 ?>
 		</div>
 	</div>
