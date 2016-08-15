@@ -1,102 +1,116 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<record xmlns="http://www.loc.gov/MARC21/slim">
-  <leader>01412ntm a22003017a 4500</leader>
-  <controlfield tag="001">3112448</controlfield>
-  <controlfield tag="008">090115s1846    nik           000 i eng d</controlfield>
-  <datafield tag="033" ind1="0" ind2="0">
-    <subfield code="a">18460101</subfield>
-  </datafield>
-  <datafield tag="040" ind1=" " ind2=" ">
-    <subfield code="a">BRL</subfield>
-  </datafield>
-  <datafield tag="099" ind1=" " ind2=" ">
-    <subfield code="a">Ms.A.1.2 v.16, p.1</subfield>
-  </datafield>
-  <datafield tag="100" ind1="1" ind2=" ">
-    <subfield code="a">Douglass, Frederick,</subfield>
-    <subfield code="d">1818-1895.</subfield>
-  </datafield>
-  <datafield tag="245" ind1="1" ind2="0">
-    <subfield code="a">[Letter to William Lloyd Garrison]</subfield>
-    <subfield code="h">[manuscript].</subfield>
-  </datafield>
-  <datafield tag="260" ind1=" " ind2=" ">
-    <subfield code="a">Belfast, [Northern Ireland],</subfield>
-    <subfield code="c">[Jan. 1, 1846].</subfield>
-  </datafield>
-  <datafield tag="300" ind1=" " ind2=" ">
-    <subfield code="a">1 leaf (2 p.)</subfield>
-  </datafield>
-  <datafield tag="500" ind1=" " ind2=" ">
-    <subfield code="a">Holograph, signed.</subfield>
-  </datafield>
-  <datafield tag="500" ind1=" " ind2=" ">
-    <subfield code="a">First page of letter is missing. For the complete letter, see The Liberator, January 30, 1846.</subfield>
-  </datafield>
-  <datafield tag="520" ind1="0" ind2=" ">
-    <subfield code="a">Frederick Douglass compares his reception in Europe with that of the United States. He tells about his visit to Eton Hall.</subfield>
-  </datafield>
-  <datafield tag="600" ind1="1" ind2="0">
-    <subfield code="a">Garrison, William Lloyd,</subfield>
-    <subfield code="d">1805-1879</subfield>
-    <subfield code="v">Correspondence.</subfield>
-  </datafield>
-  <datafield tag="600" ind1="1" ind2="0">
-    <subfield code="a">Douglass, Frederick,</subfield>
-    <subfield code="d">1818-1895</subfield>
-    <subfield code="v">Correspondence.</subfield>
-  </datafield>
-  <datafield tag="650" ind1=" " ind2="0">
-    <subfield code="a">Antislavery movements</subfield>
-    <subfield code="z">United States</subfield>
-    <subfield code="x">History</subfield>
-    <subfield code="y">19th century.</subfield>
-  </datafield>
-  <datafield tag="650" ind1=" " ind2="0">
-    <subfield code="a">Abolitionists</subfield>
-    <subfield code="z">United States</subfield>
-    <subfield code="y">19th century</subfield>
-    <subfield code="v">Correspondence.</subfield>
-  </datafield>
-  <datafield tag="655" ind1=" " ind2="0">
-    <subfield code="a">Letters.</subfield>
-  </datafield>
-  <datafield tag="655" ind1=" " ind2="0">
-    <subfield code="a">Manuscripts.</subfield>
-  </datafield>
-  <datafield tag="700" ind1="1" ind2="0">
-    <subfield code="a">Garrison, William Lloyd,</subfield>
-    <subfield code="d">1805-1879.</subfield>
-    <subfield code="e">recipient</subfield>
-  </datafield>
-  <datafield tag="830" ind1=" " ind2="0">
-    <subfield code="a">William Lloyd Garrison Correspondence (1823-1879)</subfield>
-  </datafield>
-  <datafield tag="914" ind1=" " ind2=" ">
-    <subfield code="a">3919803</subfield>
-  </datafield>
-  <datafield tag="852" ind1=" " ind2=" ">
-    <subfield code="a">BPL - Special Collections </subfield>
-    <subfield code="b">Manuscript - In Library Use Only</subfield>
-    <subfield code="h">Ms.A.1.2</subfield>
-    <subfield code="i">p.1 2012</subfield>
-    <subfield code="k">RARE BKS Mss.</subfield>
-    <subfield code="m">v.16,</subfield>
-    <subfield code="o">9</subfield>
-    <subfield code="p">39999066767938</subfield>
-    <subfield code="r">Non-circulating</subfield>
-    <subfield code="w">Manuscript</subfield>
-    <subfield code="y">1</subfield>
-    <subfield code="9">0</subfield>
-  </datafield>
-  <datafield tag="999" ind1=" " ind2=" ">
-    <subfield code="b">Ms.A.1.2 v.16, p.1</subfield>
-    <subfield code="c">0</subfield>
-    <subfield code="g">1</subfield>
-    <subfield code="h">1</subfield>
-    <subfield code="i">1</subfield>
-    <subfield code="j">1</subfield>
-    <subfield code="k">0</subfield>
-    <subfield code="x">Ms.A.1.2 v.16, p.1</subfield>
-  </datafield>
-</record>
+<?xml version = "1.0" encoding = "UTF-8"?>
+  <collection xmlns="http://www.loc.gov/MARC21/slim"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.loc.gov/MARC21/slim
+http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
+    <record xmlns="http://www.loc.gov/MARC21/slim"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.loc.gov/MARC21/slim
+http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
+      <leader>     nam  2200457 a 4500</leader>
+      <controlfield tag="001">003404590</controlfield>
+      <controlfield tag="005">20091106150915.0</controlfield>
+      <controlfield tag="006">m        d</controlfield>
+      <controlfield tag="007">cr bn|||||||||</controlfield>
+      <controlfield tag="008">091028s2008    caua          000 p eng d</controlfield>
+      <datafield tag="024" ind1="8" ind2=" ">
+        <subfield code="a">21085</subfield>
+      </datafield>
+      <datafield tag="024" ind1="8" ind2=" ">
+        <subfield code="a">3.84</subfield>
+      </datafield>
+      <datafield tag="024" ind1="8" ind2=" ">
+        <subfield code="a">R219235</subfield>
+      </datafield>
+      <datafield tag="035" ind1=" " ind2=" ">
+        <subfield code="a">(OCoLC)ocn460736493</subfield>
+      </datafield>
+      <datafield tag="040" ind1=" " ind2=" ">
+        <subfield code="a">CUT</subfield>
+        <subfield code="c">CUT</subfield>
+      </datafield>
+      <datafield tag="245" ind1="0" ind2="4">
+        <subfield code="a">The bonny scot</subfield>
+        <subfield code="h">[electronic resource] :</subfield>
+        <subfield code="b">or, the yielding lass.</subfield>
+      </datafield>
+      <datafield tag="246" ind1="1" ind2=" ">
+        <subfield code="i">First line:</subfield>
+        <subfield code="a">AS I sate at my Spinning=Wheel</subfield>
+      </datafield>
+      <datafield tag="260" ind1=" " ind2=" ">
+        <subfield code="a">Santa Barbara, CA :</subfield>
+        <subfield code="b">University of California, Santa Barbara, The Early Modern Center,</subfield>
+        <subfield code="c">2008.</subfield>
+      </datafield>
+      <datafield tag="516" ind1=" " ind2=" ">
+        <subfield code="a">Text (XML).</subfield>
+      </datafield>
+      <datafield tag="538" ind1=" " ind2=" ">
+        <subfield code="a">System requirements: Web browser for the XML and HTML files.</subfield>
+      </datafield>
+      <datafield tag="538" ind1=" " ind2=" ">
+        <subfield code="a">Mode of access: Internet; host: ebba.english.ucsb.edu.</subfield>
+      </datafield>
+      <datafield tag="500" ind1=" " ind2=" ">
+        <subfield code="a">Title from English Broadside Ballad Archive (queried 2008 Nov 07).</subfield>
+      </datafield>
+      <datafield tag="500" ind1=" " ind2=" ">
+        <subfield code="a">Original Publication Date: c. 1664-1696.</subfield>
+      </datafield>
+      <datafield tag="500" ind1=" " ind2=" ">
+        <subfield code="a">TEI file encoded by the English Broadside Ballad Archive Editorial Team.</subfield>
+      </datafield>
+      <datafield tag="500" ind1=" " ind2=" ">
+        <subfield code="a">EMC no. 21085.</subfield>
+      </datafield>
+      <datafield tag="500" ind1=" " ind2=" ">
+        <subfield code="a">Pepys 3.84.</subfield>
+      </datafield>
+      <datafield tag="500" ind1=" " ind2=" ">
+        <subfield code="a">ESTC no. R219235.</subfield>
+      </datafield>
+      <datafield tag="500" ind1=" " ind2=" ">
+        <subfield code="a">Reference: Wing B3604[B]; Rollins (2) ?222 (March 1, 1675, ii, 499).</subfield>
+      </datafield>
+      <datafield tag="534" ind1=" " ind2=" ">
+        <subfield code="p">Reproduction of Microfilm :</subfield>
+        <subfield code="a">Magdalene College (University of Cambridge).</subfield>
+        <subfield code="t">The Pepys ballads</subfield>
+        <subfield code="c">Cambridge [England] : The Pepys Library, Magdalene College, 2003.</subfield>
+      </datafield>
+      <datafield tag="536" ind1=" " ind2=" ">
+        <subfield code="a">Sponsored by the University of California, Santa Barbara and The Early Modern Center.</subfield>
+      </datafield>
+      <datafield tag="540" ind1=" " ind2=" ">
+        <subfield code="a">The University of California makes a claim of copyright only to original contributions made by Early Modern Center participants and other members of the university community. The University of California makes no claim of copyright to the original text. Permission is granted to download, transmit or otherwise reproduce, distribute or display the contributions to this work claimed by The University of California for non-profit educational purposes, provided that this header is included in its entirety. For inquiries about commercial uses, please contact: Early Modern Center - English Department, University of California, Santa Barbara, CA 93105, United States of America, Email: http://ebba.english.ucsb.edu/contact/.</subfield>
+      </datafield>
+      <datafield tag="650" ind1=" " ind2="0">
+        <subfield code="a">Ballads, English</subfield>
+        <subfield code="y">17th century.</subfield>
+      </datafield>
+      <datafield tag="650" ind1=" " ind2="0">
+        <subfield code="a">Broadside</subfield>
+        <subfield code="y">17th century.</subfield>
+      </datafield>
+      <datafield tag="655" ind1=" " ind2="7">
+        <subfield code="a">Ballads</subfield>
+        <subfield code="2">aat</subfield>
+      </datafield>
+      <datafield tag="710" ind1="2" ind2=" ">
+        <subfield code="a">University of California, Santa Barbara.</subfield>
+        <subfield code="b">Early Modern Center.</subfield>
+      </datafield>
+      <datafield tag="740" ind1="0" ind2=" ">
+        <subfield code="a">English Broadside Ballad Archive.</subfield>
+      </datafield>
+      <datafield tag="856" ind1="4" ind2="0">
+        <subfield code="u">http://ebba.english.ucsb.edu/ballad/21085/</subfield>
+        <subfield code="z">English Broadside Ballad Archive.</subfield>
+      </datafield>
+      <datafield tag="049" ind1=" " ind2=" ">
+        <subfield code="a">CUTM</subfield>
+      </datafield>
+    </record>
+
+</collection>  

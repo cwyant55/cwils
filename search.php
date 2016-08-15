@@ -8,7 +8,7 @@ include(dirname(__FILE__) . "/Include/header.php");
 <?php require(dirname(__FILE__) . "/Include/nav.php"); ?>
 
 <div class="container col-md-8">
-	<div class="panel panel-default">
+	<div class="panel panel-default" id="search-wrapper">
 	<div class="panel-body">
 	<h1>Search</h1>
 	
@@ -44,8 +44,8 @@ include(dirname(__FILE__) . "/Include/header.php");
 	</div>
 	<div class="col-md-8">
 		
-<?php // search processing
-	if (!empty($_GET)) {
+<?php // search box processing
+	if (!empty($_GET) && !isset($_GET['barcode'])) {
 		$terms = $_GET['text'];
 		$searchtype = $_GET['searchtype'];
 			switch ($searchtype) {
@@ -70,17 +70,57 @@ if ($results) { ?>
 <?php 
 $i = 1;
 foreach ($results as $result) {
-	echo '<tr><td>' . $i . '</td><td><a href="#">' . $result['title'] . '</a></td><td>' . $result['barcode'] . '</td></tr>';
+	echo '<tr><td>' . $i . '</td><td><a href="/search.php?barcode=' . $result['barcode'] . '">' . $result['title'] . '</a></td><td>' . $result['barcode'] . '</td></tr>';
 	$i++;
 	
 	} ?>
 	</table>
 <?php }
 else {
-	echo 'No results.';
+	echo '<div class="alert alert-danger">No results.</div>';
 }
 
 	} // if
+	
+
+	// item info
+	if (isset($_GET['barcode'])) { ?>
+		
+		
+		<?php $barcode = $_GET['barcode'];
+		$res = getItem($barcode);
+			if (!$res) { ?>
+				<div class="alert alert-danger">
+				Item not found!
+				</div>
+			<?php } //if
+		else { ?>
+			<h2><?php echo $res['title']; ?></h2>
+			<div><strong>Barcode:</strong> <?php echo $res['barcode']; ?></div>
+			<?php // prettify checkout length
+			switch($res['checkoutlength']) {
+				case "1week": 
+					$checkoutlength = "1 week";
+					break;
+				case "2week":
+					$checkoutlength = "2 weeks";
+					break;
+				case "3week":
+					$checkoutlength = "3 weeks";
+					break;
+				} // switch ?>
+			<div><strong>Checkout Length:</strong> <?php echo $checkoutlength; ?></div>
+			<?php // show availability
+			if ($res['available'] == "1") {
+				echo '<div class="alert alert-success">Available</div>';
+			}
+			else {
+				echo '<div class="alert alert-danger">Not available</div>';				
+			}
+	 } //else
+		
+	}
+	
 ?>
 		</div>
 	</div>
