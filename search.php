@@ -29,13 +29,12 @@ include(dirname(__FILE__) . "/Include/header.php");
 				<option value="keyword">Keyword</option>
 				<option value="title">Title</option>
 				<option value="barcode">Barcode</option>
+				<option value="author">Author</option>
+				<option value="format">Format</option>
 			</select>
             <!-- errors will go here -->
         </div>
 	   </div>
-		<!-- Required fields to POST -->
-		<!-- <input type="hidden" name="required" value="text"> -->
-		<!-- <input type="hidden" name="formtype" value="search"> -->
 
        <button type="submit" class="btn btn-success">Submit <span class="fa fa-arrow-right"></span></button>
 		
@@ -58,19 +57,27 @@ include(dirname(__FILE__) . "/Include/header.php");
 				case "barcode":
 					$query = 'barcode:' . $terms;
 					break;
+				case "author":
+					$query = 'author:' . $terms;
+					break;
+				case "format":
+					$query = 'format:' . $terms;
+					break;
 				} // switch
 				
 		// run the query
 		$results = solrSearch($query);
 
-if ($results) { ?>
+if ($results) { 
+	$numresults = count($results);	?>
 	<h2>Search results for <?php echo '<i>' . $searchtype . ' "' . $terms . '"</i>'; ?>:</h2>
+	<div>Results found: <?php echo $numresults; ?></div>
 	<table class="table table-striped">
-	<th>#</th><th>Title</th><th>Barcode</th>
+	<th>#</th><th>Title</th><th>Author</th><th>Barcode</th><th>Format</th>
 <?php 
 $i = 1;
 foreach ($results as $result) {
-	echo '<tr><td>' . $i . '</td><td><a href="/search.php?barcode=' . $result['barcode'] . '">' . $result['title'] . '</a></td><td>' . $result['barcode'] . '</td></tr>';
+	echo '<tr><td>' . $i . '</td><td><a href="/search.php?barcode=' . $result['barcode'] . '">' . $result['title'] . '</a></td><td>' . $result['author'] . '</td><td>' . $result['barcode'] . '</td><td>' . $result['format'] . '</td></tr>';
 	$i++;
 	
 	} ?>
@@ -81,11 +88,9 @@ else {
 }
 
 	} // if
-	
 
 	// item info
 	if (isset($_GET['barcode'])) { ?>
-		
 		
 		<?php $barcode = $_GET['barcode'];
 		$res = getItem($barcode);
@@ -96,7 +101,9 @@ else {
 			<?php } //if
 		else { ?>
 			<h2><?php echo $res['title']; ?></h2>
-			<div><strong>Barcode:</strong> <?php echo $res['barcode']; ?></div>
+			<div><strong>Author: </strong><?php echo $res['author']; ?></div>
+			<div><strong>Barcode: </strong><?php echo $res['barcode']; ?></div>
+			<div><strong>Format: </strong><?php echo $res['format']; ?></div>
 			<?php // prettify checkout length
 			switch($res['checkoutlength']) {
 				case "1week": 

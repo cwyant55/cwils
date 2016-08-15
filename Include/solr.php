@@ -16,7 +16,7 @@ function solrSearch ($test) {
 	$client = solrClient();
 	$query = new SolrQuery();
 	$query->setQuery($test);
-	$query->addField('id')->addField('title')->addField('barcode');
+	$query->addField('id')->addField('title')->addField('barcode')->addField('author')->addField('format');
 	$queryResponse = $client->query($query);
 	$response = $queryResponse->getResponse();
 	$results = ( $response->response->docs );
