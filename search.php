@@ -66,7 +66,8 @@ include(dirname(__FILE__) . "/Include/header.php");
 				} // switch
 				
 		// run the query
-		$results = solrSearch($query);
+		//$results = solrSearch($query);
+		$results = solrSearchFacets($query);
 
 if ($results) { 
 	$numresults = count($results);	?>
@@ -82,6 +83,7 @@ foreach ($results as $result) {
 	
 	} ?>
 	</table>
+	
 <?php }
 else {
 	echo '<div class="alert alert-danger">No results.</div>';

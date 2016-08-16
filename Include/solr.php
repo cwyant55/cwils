@@ -23,4 +23,18 @@ function solrSearch ($test) {
 	return $results;
 }
 
+function solrSearchFacets ($test) {
+	$client = solrClient();
+	$query = new SolrQuery();
+	$query->setQuery($test);
+	$query->addField('id')->addField('title')->addField('barcode')->addField('author')->addField('format');
+	$query->setRows(25);
+	$query->setFacet(true);
+	$query->addFacetField('author')->addFacetField('format');
+	$queryResponse = $client->query($query);
+	$response = $queryResponse->getResponse();
+	$results = ( $response->response->docs );
+	return $results;
+}
+
 ?>
