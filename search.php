@@ -70,7 +70,7 @@ include(dirname(__FILE__) . "/Include/header.php");
 		$results = solrSearchFacets($query);
 
 if ($results) { 
-	$numresults = count($results);	?>
+	$numresults = count($results) - 1;	?>
 	<h2>Search results for <?php echo '<i>' . $searchtype . ' "' . $terms . '"</i>'; ?>:</h2>
 	<div>Results found: <?php echo $numresults; ?></div>
 	<table class="table table-striped">
@@ -78,11 +78,34 @@ if ($results) {
 <?php 
 $i = 1;
 foreach ($results as $result) {
+	if ($i <= $numresults) {
 	echo '<tr><td>' . $i . '</td><td><a href="/search.php?barcode=' . $result['barcode'] . '">' . $result['title'] . '</a></td><td>' . $result['author'] . '</td><td>' . $result['barcode'] . '</td><td>' . $result['format'] . '</td></tr>';
 	$i++;
-	
+	}
 	} ?>
 	</table>
+
+<!-- facets -->	
+<?php
+
+// get facet values
+$keys = array();
+foreach ($results['facets'] as $key => $value) {
+	$keys[] = $key;
+}
+
+foreach ($keys as $k) {
+	echo 'Narrow by ' . $k . '<br/>';
+	foreach ($results['facets'][$k] as $key => $value) {
+	if ($value > 1) {
+	$params = array_merge($_GET, array($k => $key));
+	$url = http_build_query($params);
+	echo '<a href="search.php?' . $url . '">' . $key . ' (' . $value . ')</a><br/>';
+	}
+}
+	echo '<br/>';
+} // foreach
+?>
 	
 <?php }
 else {

@@ -34,6 +34,7 @@ function solrSearchFacets ($test) {
 	$queryResponse = $client->query($query);
 	$response = $queryResponse->getResponse();
 	$results = ( $response->response->docs );
+	$results['facets'] = $response['facet_counts']['facet_fields'];
 	return $results;
 }
 
