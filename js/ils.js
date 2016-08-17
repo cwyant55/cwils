@@ -1,14 +1,11 @@
-$("#more").click(function() {
-		var newBloc = $(".InputBlock").eq(0).clone();
-		newBloc.find("input").val("");
-		deleteBtn = $("<input />")
-                    .addClass('delete')
-                    .attr("type", "button")
-                    .val("X");
-    newBloc.append(deleteBtn);
-    $(".InputBlock").last().after(newBloc);
+$(document).ready(function() {
+	
+// Change search box name to match select list value, and prevent
+// select list value from appearing in $_GET
+$("#search-button").click(function() {
+		var test = $("#searchtype option:selected").val();
+		$("#text-box").attr("name", test);
+		$("#searchtype").attr("disabled", "true");
 })
 
-$("#checkout-item").on("click", ".delete", function() {
-		$(this).parent().remove();
 })

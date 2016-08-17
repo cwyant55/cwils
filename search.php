@@ -3,6 +3,7 @@
 $title = "Search";
 include(dirname(__FILE__) . "/Include/header.php");
 ?>
+<script src="../js/ils.js"></script>
 
 <!-- extra head tags -->
 <?php require(dirname(__FILE__) . "/Include/nav.php"); ?>
@@ -17,7 +18,7 @@ include(dirname(__FILE__) . "/Include/header.php");
 	<form action="search.php" method="GET" id="search">
 	
 		<div id="text-group" class="form-group">
-            <input type="text" class="form-control" name="text" placeholder="Enter search terms" required>
+            <input type="text" id="text-box" class="form-control" name="text" placeholder="Enter search terms" required>
             <!-- errors will go here -->
         </div>
 	</div>
@@ -25,7 +26,7 @@ include(dirname(__FILE__) . "/Include/header.php");
 	   	 <!-- Search Type -->
 		<div class="col-md-3">
         <div id="searchtype-group" class="form-group">
-            <select class="form-control" name="searchtype">
+            <select class="form-control" id="searchtype" name="searchtype">
 				<option value="keyword">Keyword</option>
 				<option value="title">Title</option>
 				<option value="barcode">Barcode</option>
@@ -35,43 +36,38 @@ include(dirname(__FILE__) . "/Include/header.php");
             <!-- errors will go here -->
         </div>
 	   </div>
-
-       <button type="submit" class="btn btn-success">Submit <span class="fa fa-arrow-right"></span></button>
+	         <button type="submit" id="search-button" class="btn btn-success">Submit <span class="fa fa-arrow-right"></span></button>
 		
-		</form>
+		</form>	
+		
 	</div>
 	</div>
 	<div class="col-md-8">
 		
 <?php // search box processing
 	if (!empty($_GET) && !isset($_GET['barcode'])) {
-		$terms = $_GET['text'];
-		$searchtype = $_GET['searchtype'];
-			switch ($searchtype) {
-				case "keyword":
-					$query = $terms;
-					break;
-				case "title":
-					$query = 'title:' . $terms;
-					break;
-				case "barcode":
-					$query = 'barcode:' . $terms;
-					break;
-				case "author":
-					$query = 'author:' . $terms;
-					break;
-				case "format":
-					$query = 'format:' . $terms;
-					break;
-				} // switch
-				
+		$i = 0;
+		foreach($_GET as $key => $value) {
+			if ($key == "keyword") {
+				$query = $value;
+			}
+			else {
+				$query = $key . ":" . $value;
+			}
+			if ($i > 0){
+				$mquery .= ' AND ' . $query;
+			}
+			else {
+				$mquery = $query;
+			}
+			++$i;
+		}
 		// run the query
 		//$results = solrSearch($query);
-		$results = solrSearchFacets($query);
+		$results = solrSearchFacets($mquery);
 
 if ($results) { 
 	$numresults = count($results) - 1;	?>
-	<h2>Search results for <?php echo '<i>' . $searchtype . ' "' . $terms . '"</i>'; ?>:</h2>
 	<div>Results found: <?php echo $numresults; ?></div>
 	<table class="table table-striped">
 	<th>#</th><th>Title</th><th>Author</th><th>Barcode</th><th>Format</th>
