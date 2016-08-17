@@ -66,7 +66,7 @@ include(dirname(__FILE__) . "/Include/header.php");
 		//$results = solrSearch($query);
 		$results = solrSearchFacets($mquery);
 
-if ($results) { 
+if (count($results) > 1) { 
 	$numresults = count($results) - 1;	?>
 	<div>Results found: <?php echo $numresults; ?></div>
 	<table class="table table-striped">
